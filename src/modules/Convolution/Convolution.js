@@ -1,7 +1,7 @@
 var _ = require('lodash');
 const pixelSetter = require('../../util/pixelSetter.js');
 
-module.exports = exports = function(pixels, constantFactor, kernelValues, texMode) {
+module.exports = exports = function(pixels, constantFactor, kernelValues) {
   let kernel = kernelGenerator(constantFactor, kernelValues),
     pixs = {
       r: [],
