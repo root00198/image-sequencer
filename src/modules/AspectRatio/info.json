@@ -1,0 +1,23 @@
+{
+    "name": "aspect-ratio",
+    "description": "Crops an image in a particular aspect-ratio",
+    "inputs": {
+      "x": {
+        "type": "integer",
+        "desc": "X-position (measured from left) from where cropping starts",
+        "default": 0
+      },
+      "y": {
+        "type": "integer",
+        "desc": "Y-position (measured from top) from where cropping starts",
+        "default": 0
+      },
+      "aspectratio":{
+        "type": "string",
+        "desc": "Enter aspect ratio in following format width:height",
+        "default": "1:1"
+      }
+    },
+   "docs-link":""
+  }
+  

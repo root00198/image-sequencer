@@ -4,6 +4,7 @@
 module.exports = {
   'add-qr': require('./modules/AddQR'),
   'average': require('./modules/Average'),
+  'aspect-ratio': require('./modules/AspectRatio'),
   'blend': require('./modules/Blend'),
   'blob-analysis': require('./modules/BlobAnalysis'),
   'blur': require('./modules/Blur'),
