@@ -1,4 +1,3 @@
-const pixelManipulation = require('../_nomodule/PixelManipulation');
 /*
 * Crops an Image on the basic of the aspect ratio
 */
@@ -9,16 +8,16 @@ module.exports = function AspectRatio(options, UI) {
 
   function draw(input, callback) {
 
-    var step = this;
-    var startingX = Number(options.startingX || defaults.startingX);
-    var startingY = Number(options.startingY || defaults.startingY);
-    var aspectRatio = (options.aspectRatio || defaults.aspectRatio).split(':');
-    var widthRatio = Number(aspectRatio[0]);
-    var heightRatio = Number(aspectRatio[1]);
+    var step = this,
+      startingX = Number(options.startingX || defaults.startingX),
+      startingY = Number(options.startingY || defaults.startingY),
+      aspectRatio = (options.aspectRatio || defaults.aspectRatio).split(':'),
+      widthRatio = Number(aspectRatio[0]),
+      heightRatio = Number(aspectRatio[1]);
 
     function extraManipulation(pixels) {
-      var width = pixels.shape[0];
-      var height = pixels.shape[1];
+      var width = pixels.shape[0],
+        height = pixels.shape[1];
       var endX, endY;
       if(((width - startingX) / widthRatio) * heightRatio <= (height - startingY)) {
         endX = width;
@@ -37,7 +36,7 @@ module.exports = function AspectRatio(options, UI) {
     function output(image, datauri, mimetype, wasmSuccess) {
       step.output = { src: datauri, format: mimetype, wasmSuccess, useWasm: options.useWasm };
     }
-    return pixelManipulation(input, {
+    return require('../_nomodule/PixelManipulation')(input, {
       output: output,
       ui: options.step.ui,
       extraManipulation: extraManipulation,
