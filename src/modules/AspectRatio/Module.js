@@ -1,3 +1,4 @@
+const pixelManipulation = require('../_nomodule/PixelManipulation');
 /*
 * Crops an Image on the basic of the aspect ratio
 */
@@ -6,7 +7,7 @@ module.exports = function AspectRatio(options, UI) {
   var defaults = require('./../../util/getDefaults.js')(require('./info.json'));
   var output;
 
-  function draw(input, callback, progressObj) {
+  function draw(input, callback) {
 
     var step = this;
     var startingX = Number(options.startingX || defaults.startingX);
@@ -15,11 +16,7 @@ module.exports = function AspectRatio(options, UI) {
     var widthRatio = Number(aspectRatio[0]);
     var heightRatio = Number(aspectRatio[1]);
 
-    progressObj.stop(true);
-    progressObj.overrideFlag = true;
-
-    var getPixels = require('get-pixels');
-    getPixels(input.src, function(err, pixels) {
+    function extraManipulation(pixels) {
       var width = pixels.shape[0];
       var height = pixels.shape[1];
       var endX, endY;
@@ -31,24 +28,25 @@ module.exports = function AspectRatio(options, UI) {
         endX = (((height - startingY) / heightRatio) * widthRatio) + startingX;
         endY = height;
       }
-      require('../Crop/Crop.js')(input, {'x': startingX, 'y': startingY, 'w': endX - startingX, 'h': endY - startingY}, function (out, format) {
-
-        // This output is accessible to Image Sequencer
-        step.output = {
-          src: out,
-          format: format
-        };
-  
-        // Tell Image Sequencer that step has been drawn
-        callback();
-  
+      const newPixels = require('../Crop/Crop')(pixels, {'x': startingX, 'y': startingY, 'w': endX - startingX, 'h': endY - startingY}, function() {
       });
-    });
+      return newPixels;
+    }
+
 
     function output(image, datauri, mimetype, wasmSuccess) {
       step.output = { src: datauri, format: mimetype, wasmSuccess, useWasm: options.useWasm };
     }
-    return;
+    return pixelManipulation(input, {
+      output: output,
+      ui: options.step.ui,
+      extraManipulation: extraManipulation,
+      format: input.format,
+      image: options.image,
+      inBrowser: options.inBrowser,
+      callback: callback,
+      useWasm:options.useWasm
+    });
   }
   return {
     options: options,
