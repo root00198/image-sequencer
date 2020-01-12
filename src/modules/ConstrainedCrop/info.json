@@ -12,7 +12,7 @@
         "desc": "Y-position (measured from top) from where cropping starts",
         "default": 0
       },
-      "constrainedRatio":{
+      "aspectRatio":{
         "type": "string",
         "desc": "Enter aspect ratio in following format width:height",
         "default": "1:1"

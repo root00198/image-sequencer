@@ -1,5 +1,5 @@
 /*
-* Crops an Image on the basic of the ratio provided
+* Crops an Image on the basis of the ratio provided
 */
 module.exports = function ConstrainedCrop(options, UI) {
 
@@ -11,9 +11,9 @@ module.exports = function ConstrainedCrop(options, UI) {
     var step = this,
       startingX = Number(options.startingX || defaults.startingX),
       startingY = Number(options.startingY || defaults.startingY),
-      constrainedRatio = (options.constrainedRatio || defaults.constrainedRatio).split(':'),
-      widthRatio = Number(constrainedRatio[0]),
-      heightRatio = Number(constrainedRatio[1]);
+      aspectRatio = (options.aspectRatio || defaults.aspectRatio).split(':'),
+      widthRatio = Number(aspectRatio[0]),
+      heightRatio = Number(aspectRatio[1]);
 
     function extraManipulation(pixels) {
       var width = pixels.shape[0],
