@@ -18,7 +18,8 @@ module.exports = function DoNothing(options, UI) {
       var w = pixels.shape[0];
       var h = pixels.shape[1];
       var decoded = jsQR(pixels.data, w, h);
-      if (options.step.inBrowser && options.step.ui) options.step.qrval += (decoded) ? decoded.data : 'undefined';
+      if(options.step.qrval === undefined) options.step.qrval = '';
+      options.step.qrval += (decoded) ? decoded.data : 'undefined';
       return pixels;
     }
     function output(image, datauri, mimetype, wasmSuccess) {
