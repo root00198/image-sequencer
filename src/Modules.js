@@ -4,7 +4,6 @@
 module.exports = {
   'add-qr': require('./modules/AddQR'),
   'average': require('./modules/Average'),
-  'aspect-ratio': require('./modules/AspectRatio'),
   'blend': require('./modules/Blend'),
   'blob-analysis': require('./modules/BlobAnalysis'),
   'blur': require('./modules/Blur'),
@@ -14,6 +13,7 @@ module.exports = {
   'colorbar': require('./modules/Colorbar'),
   'color-temperature': require('./modules/ColorTemperature'),
   'colormap': require('./modules/Colormap'),
+  'constrained-crop': require('./modules/ConstrainedCrop'),
   'contrast': require('./modules/Contrast'),
   'convolution': require('./modules/Convolution'),
   'crop': require('./modules/Crop'),

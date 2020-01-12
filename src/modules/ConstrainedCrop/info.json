@@ -1,5 +1,5 @@
 {
-    "name": "aspect-ratio",
+    "name": "constrained-crop",
     "description": "Crops an image in a particular aspect-ratio",
     "inputs": {
       "startingX": {

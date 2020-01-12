@@ -1,7 +1,7 @@
 /*
 * Crops an Image on the basic of the aspect ratio
 */
-module.exports = function AspectRatio(options, UI) {
+module.exports = function ConstrainedCrop(options, UI) {
 
   var defaults = require('./../../util/getDefaults.js')(require('./info.json'));
   var output;
