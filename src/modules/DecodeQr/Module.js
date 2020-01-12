@@ -15,19 +15,14 @@ module.exports = function DoNothing(options, UI) {
 
     var step = this;
 
-    getPixels(input.src, function(err, pixels) {
-
-      if (err) throw err;
-
+    function extraManipulation(pixels){
       var w = pixels.shape[0];
       var h = pixels.shape[1];
       var decoded = jsQR(pixels.data, w, h);
-
-
-      // Tell Image Sequencer that this step is complete
-      options.step.qrval = (decoded) ? decoded.data : 'undefined';
-    });
-
+      var qrValue = (decoded) ? decoded.data : 'undefined';
+      if (options.step.inBrowser && options.step.ui) $(options.step.ui).find('.details').append('<p><b>Qr Code</b> : ' + qrValue + '</p>');
+      return pixels;
+    }
     function output(image, datauri, mimetype, wasmSuccess) {
       step.output = { src: datauri, format: mimetype, wasmSuccess, useWasm: options.useWasm };
     }
@@ -39,7 +34,8 @@ module.exports = function DoNothing(options, UI) {
       image: options.image,
       inBrowser: options.inBrowser,
       callback: callback,
-      useWasm:options.useWasm
+      useWasm:options.useWasm,
+      extraManipulation: extraManipulation
     });
 
   }
