@@ -5,7 +5,6 @@ module.exports = function DoNothing(options, UI) {
 
   var output;
   var jsQR = require('jsqr');
-  var getPixels = require('get-pixels');
 
   // This function is called everytime a step has to be redrawn
   function draw(input, callback, progressObj) {
