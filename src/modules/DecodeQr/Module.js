@@ -19,11 +19,7 @@ module.exports = function DoNothing(options, UI) {
       var w = pixels.shape[0];
       var h = pixels.shape[1];
       var decoded = jsQR(pixels.data, w, h);
-      var qrValue = (decoded) ? decoded.data : 'undefined';
-      if (options.step.inBrowser && options.step.ui)
-        $(options.step.ui).find('.details').append('<p><b>Qr Code</b> : ' + qrValue + '</p>');
-      else
-        console.log('Decoded Qr Code : ' + qrValue);
+      if (options.step.inBrowser && options.step.ui) options.step.qrval = (decoded) ? decoded.data : 'undefined';
       return pixels;
     }
     function output(image, datauri, mimetype, wasmSuccess) {
