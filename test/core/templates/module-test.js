@@ -14,10 +14,11 @@ target = 'test_outputs';
  * @param {"Object"} options module options
  * @param {String} benchmark dataURI of the benchmark image
  * @param {String} [input="red_image"] optional input image. Default is a red image.
+ * @param {String} [format="png"] optional format of the output image. Default is a png.
  */
-module.exports = (moduleName, options, benchmark, input) => {
+module.exports = (moduleName, options, benchmark, input, format) => {
   let sequencer = ImageSequencer({ui: false});
-
+  format = format || 'png';
   test(`${moduleName} module loads correctly`, t => {
     sequencer.loadImages(input || red);
     sequencer.addSteps(moduleName, options);
@@ -37,20 +38,9 @@ module.exports = (moduleName, options, benchmark, input) => {
   test(`${moduleName} module works correctly`, t => {
     sequencer.run({mode: 'test'}, () => {
       let result = sequencer.steps[1].output.src;
-
-      base64Img.imgSync(result, target, `${moduleName}-result`);
-      base64Img.imgSync(benchmark, target, `${moduleName}-benchmark`);
-
-      result = `./test_outputs/${moduleName}-result.png`;
-      benchmark = `./test_outputs/${moduleName}-benchmark.png`;
-
-      looksSame(result, benchmark, function(err, res) {
-        if (err) console.log(err);
-
-        t.equal(res.equal, true, `${moduleName} module works correctly`);
-        sequencer = null;
-        t.end();
-      });
+      t.equal(result === benchmark, true, `${moduleName} module works correctly with ${format}`);
+      sequencer = null;
+      t.end();
     });
   });
   
