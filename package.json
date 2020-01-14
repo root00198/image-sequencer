@@ -9,7 +9,8 @@
     "test-ui": "node node_modules/jasmine/bin/jasmine test/ui/spec/*.js",
     "test-ui-2": "node ./node_modules/.bin/jest",
     "setup": "npm i && npm i -g grunt grunt-cli && grunt build $$ npm rebuild --build-from-source",
-    "start": "grunt serve"
+    "start": "grunt serve",
+    "my": "node ./test/core/modulesGIFTest/index.js | tap-spec;"
   },
   "lint-staged": {
     "*.js": [
