@@ -38,6 +38,10 @@ module.exports = (moduleName, options, benchmark, input, format) => {
   test(`${moduleName} module works correctly`, t => {
     sequencer.run({mode: 'test'}, () => {
       let result = sequencer.steps[1].output.src;
+      console.log(result);
+      base64Img.imgSync(result, target, `${moduleName}-result`);
+      base64Img.imgSync(benchmark, target, `${moduleName}-benchmark`);
+
       t.equal(result === benchmark, true, `${moduleName} module works correctly with ${format}`);
       sequencer = null;
       t.end();
