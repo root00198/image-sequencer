@@ -1,6 +1,5 @@
 var test = require('tape');
 var base64Img = require('base64-img');
-var looksSame = require('looks-same');
 
 require('../../../src/ImageSequencer.js');
 
@@ -31,12 +30,8 @@ test('Check Options', function(t) {
 //     var result = sequencer.steps[1].output.src;
 //     base64Img.imgSync(result, target, 'result');
 //     base64Img.imgSync(red, target, 'red');
-//     result = './test_outputs/result.png';
-//     red = './test_outputs/red.png';
-//     looksSame(result, red, function(err, res) {
-//       if (err) console.log(err);
-//       t.equal(res.equal, true);
-//       t.end();
-//     });
+//     t.equal(result === benchmark, true, `Text-Overlay module works correctly with png`);
+//     sequencer = null;
+//     t.end();
 //   });
 // });

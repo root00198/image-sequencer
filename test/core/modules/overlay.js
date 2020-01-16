@@ -1,6 +1,5 @@
 const test = require('tape'),
   base64Img = require('base64-img'),
-  looksSame = require('looks-same'),
   ImageSequencer = require('../../../src/ImageSequencer'),
   image = require('../images/IS-QR'),
   target = 'test_outputs',
@@ -37,16 +36,8 @@ test('overlay module works correctly', t => {
 
     base64Img.imgSync(result, target, 'overlay-result');
     base64Img.imgSync(benchmark, target, 'overlay-benchmark');
-
-    result = './test_outputs/overlay-result.png';
-    benchmark = './test_outputs/overlay-benchmark.png';
-
-    looksSame(result, benchmark, function(err, res) {
-      if (err) console.log(err);
-
-      t.equal(res.equal, true, 'overlay module works correctly');
-      sequencer = null;
-      t.end();
-    });
+    t.equal(result === benchmark, true, 'Overlay module works correctly with png');
+    sequencer = null;
+    t.end();
   });
 });
