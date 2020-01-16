@@ -1,6 +1,5 @@
 const test = require('tape'),
-  base64Img = require('base64-img'),
-  looksSame = require('looks-same');
+  base64Img = require('base64-img');
 
 const ImageSequencer = require('../../../src/ImageSequencer');
 
