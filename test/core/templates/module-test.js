@@ -1,5 +1,6 @@
 const test = require('tape'),
-  base64Img = require('base64-img');
+  base64Img = require('base64-img'),
+  looksSame = require('looks-same');
 
 const ImageSequencer = require('../../../src/ImageSequencer');
 
@@ -16,6 +17,7 @@ target = 'test_outputs';
  */
 module.exports = (moduleName, options, benchmark, input) => {
   let sequencer = ImageSequencer({ui: false});
+
   test(`${moduleName} module loads correctly`, t => {
     sequencer.loadImages(input || red);
     sequencer.addSteps(moduleName, options);
@@ -39,9 +41,16 @@ module.exports = (moduleName, options, benchmark, input) => {
       base64Img.imgSync(result, target, `${moduleName}-result`);
       base64Img.imgSync(benchmark, target, `${moduleName}-benchmark`);
 
-      t.equal(result === benchmark, true, `${moduleName} module works correctly with png`);
-      sequencer = null;
-      t.end();
+      result = `./test_outputs/${moduleName}-result.png`;
+      benchmark = `./test_outputs/${moduleName}-benchmark.png`;
+
+      looksSame(result, benchmark, function(err, res) {
+        if (err) console.log(err);
+
+        t.equal(res.equal, true, `${moduleName} module works correctly`);
+        sequencer = null;
+        t.end();
+      });
     });
   });
   
