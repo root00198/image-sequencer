@@ -7,8 +7,7 @@ const test_gif = require('../images/test.gif.js');
 target = 'test_outputs';
 
 /**
- * This file contains the function which is used to test the an image-sequencer module.
- * @method moduleTest
+ * @method ModuleTest.
  * @description a common test for modules.
  * @param {String} moduleName name of the module.
  * @param {"Object"} options module options.
