@@ -2,13 +2,15 @@ const _ = require('lodash');
 module.exports = function AddQR(options, UI) {
 
   var defaults = require('./../../util/getDefaults.js')(require('./info.json'));
-  options.size = options.size || defaults.size;
-  options.qrCodeString = options.qrCodeString || defaults.qrCodeString;
   var output;
   getPixels = require('get-pixels');
 
   function draw(input, callback, progressObj) {
 
+    options.size = Number(options.size || defaults.size);
+    options.qrCodeString = options.qrCodeString || defaults.qrCodeString;
+    options.startingX = Number(options.startingX || defaults.startingX);
+    options.startingY = Number(options.startingY || defaults.startingY);
     progressObj.stop(true);
     progressObj.overrideFlag = true;
 
