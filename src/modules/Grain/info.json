@@ -1,0 +1,13 @@
+{
+    "name": "Grain",
+    "description": "Adds random Grain effect to the image",
+    "inputs": {
+        "intensity": {
+          "type": "select",
+          "desc": "Intensity of the Noise",
+          "default": "low",
+          "values": ["low", "medium", "high"]
+        }
+    },
+    "docs-link":""
+}

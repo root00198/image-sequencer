@@ -28,6 +28,7 @@ module.exports = {
   'histogram': require('./modules/Histogram'),
   'gamma-correction': require('./modules/GammaCorrection'),
   'gradient': require('./modules/Gradient'),
+  'grain': require('./modules/Grain'),
   'grid-overlay': require('./modules/GridOverlay'),
   'import-image': require('./modules/ImportImage'),
   'minify-image': require('./modules/MinifyImage'),
