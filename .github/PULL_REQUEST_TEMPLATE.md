@@ -2,7 +2,7 @@ Fixes #0000  (<=== Replace `0000` with the Issue Number)
 
 Make sure these boxes are checked before your pull request (PR) is ready to be reviewed and merged. Thanks!
 
-* [ ] tests pass -- look for a green checkbox ✔️ a few minutes after opening your PR -- or run tests locally with `npm test`
+* [ ] tests pass -- look for a green checkbox ✔️ a few minutes after opening your PR -- or run tests locally with `npm test; npm run benchmark; npm run gif-test; npm run core-tests`
 * [ ] code is in uniquely-named feature branch and has no merge conflicts
 * [ ] PR is descriptively titled
 * [ ] ask `@publiclab/is-reviewers` for help, in a comment below
