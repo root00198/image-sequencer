@@ -14,8 +14,8 @@ script:
   - npm test
   - npm run benchmark
   - npm run gif-test
-  - npm run core-tests
   - grunt tests
+  - npm run core-tests
   - npm run test-ui
   - npm run test-ui-2
   - grunt build
