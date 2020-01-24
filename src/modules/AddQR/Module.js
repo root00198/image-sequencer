@@ -17,6 +17,10 @@ module.exports = function AddQR(options, UI) {
 
     var step = this;
 
+    function changePixel(r, g, b, a) {
+      return [r, g, b, a];
+    }
+
     function extraManipulation(pixels, setRenderState, generateOutput) {
       let iw = pixels.shape[0], // Width of Original Image
         ih = pixels.shape[1]; // Height of Original Image
@@ -46,6 +50,7 @@ module.exports = function AddQR(options, UI) {
     return require('../_nomodule/PixelManipulation.js')(input, {
       output: output,
       ui: options.step.ui,
+      changePixel: changePixel,
       extraManipulation: extraManipulation,
       format: input.format,
       image: options.image,
