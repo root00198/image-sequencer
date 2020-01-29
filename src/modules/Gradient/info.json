@@ -11,12 +11,12 @@
       "width": {
         "type": "integer",
         "desc": "Final width of the canvas",
-        "default": 200
+        "default": 500
       },
       "height": {
           "type": "integer",
           "desc": "Final height of the canvas",
-          "default": 200
+          "default": 500
       },
       "startingColor": {
         "type": "text",
