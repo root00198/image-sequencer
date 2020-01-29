@@ -37,31 +37,21 @@ module.exports = function Gradient(options, UI) {
 
       parseCornerCoordinateInputs({iw, ih},
         {
-          height: { valInp: options.height, type: 'vertical' },
           width: { valInp: options.width, type: 'horizontal'},
+          height: { valInp: options.height, type: 'vertical' },
         }, function(opt, cord){
-          options.height = Math.floor(cord.height.valInp);
           options.width = Math.floor(cord.width.valInp);
+          options.height = Math.floor(cord.height.valInp);
         });
 
       const [w, h] = [options.width, options.height];
       let newPixels = require('ndarray')(new Uint8Array(4 * w * h).fill(0), [w, h, 4]);
-      if(options.gradientType === 'linear(left)') {
+      if(options.gradientType === 'linear(left)' || options.gradientType === 'linear(bottom)') {
         for(var i = 0; i < w; i++) {
           for(var j = 0; j < h; j++) {
-            let r = ((i / w) * (endingColor[0] - startingColor[0])) + startingColor[0];
-            let g = ((i / w) * (endingColor[1] - startingColor[1])) + startingColor[1];
-            let b = ((i / w) * (endingColor[2] - startingColor[2])) + startingColor[2];
-            pixelSetter(i, j, [r, g, b, 255], newPixels);
-          }
-        }
-      }
-      else if(options.gradientType === 'linear(bottom)') {
-        for(var i = 0; i < w; i++) {
-          for(var j = 0; j < h; j++) {
-            let r = ((j / h) * (endingColor[0] - startingColor[0])) + startingColor[0];
-            let g = ((j / h) * (endingColor[1] - startingColor[1])) + startingColor[1];
-            let b = ((j / h) * (endingColor[2] - startingColor[2])) + startingColor[2];
+            let r = ((options.gradientType === 'linear(left)' ? (i / w) : (j / h)) * (endingColor[0] - startingColor[0])) + startingColor[0];
+            let g = ((options.gradientType === 'linear(left)' ? (i / w) : (j / h)) * (endingColor[1] - startingColor[1])) + startingColor[1];
+            let b = ((options.gradientType === 'linear(left)' ? (i / w) : (j / h)) * (endingColor[2] - startingColor[2])) + startingColor[2];
             pixelSetter(i, j, [r, g, b, 255], newPixels);
           }
         }
