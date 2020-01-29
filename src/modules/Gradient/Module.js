@@ -37,9 +37,9 @@ module.exports = function Gradient(options, UI) {
       if(options.gradientType === 'linear') {
         for(var i = 0; i < w; i++) {
           for(var j = 0; j < h; j++) {
-            let r = Math.floor((((i / w) * (endingColor[0] - startingColor[0])) + startingColor[0]));
-            let g = Math.floor((((i / w) * (endingColor[1] - startingColor[1])) + startingColor[1]));
-            let b = Math.floor((((i / w) * (endingColor[2] - startingColor[2])) + startingColor[2]));
+            let r = ((i / w) * (endingColor[0] - startingColor[0])) + startingColor[0];
+            let g = ((i / w) * (endingColor[1] - startingColor[1])) + startingColor[1];
+            let b = ((i / w) * (endingColor[2] - startingColor[2])) + startingColor[2];
             pixelSetter(i, j, [r, g, b, 255], newPixels);
           }
         }
