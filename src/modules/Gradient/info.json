@@ -9,14 +9,14 @@
         "values": ["linear", "circular"]
       },
       "width": {
-        "type": "integer",
+        "type": "string",
         "desc": "Final width of the canvas",
-        "default": 500
+        "default": "100%"
       },
       "height": {
-          "type": "integer",
+          "type": "string",
           "desc": "Final height of the canvas",
-          "default": 500
+          "default": "100%"
       },
       "startingColor": {
         "type": "text",

@@ -1,5 +1,6 @@
 const pixelSetter = require('../../util/pixelSetter.js'),
-  pixelManipulation = require('../_nomodule/PixelManipulation');
+  pixelManipulation = require('../_nomodule/PixelManipulation'),
+  parseCornerCoordinateInputs = require('../../util/ParseInputCoordinates');
 module.exports = function Gradient(options, UI) {
 
   var defaults = require('./../../util/getDefaults.js')(require('./info.json'));
@@ -26,12 +27,23 @@ module.exports = function Gradient(options, UI) {
       startingColor = startingColor.split(',');
       endingColor = endingColor.substring(endingColor.indexOf('(') + 1, endingColor.length - 1); // Extract only the values from rgba(_,_,_,_)
       endingColor = endingColor.split(',');
-
+      
       for(var i in startingColor)
         startingColor[i] = parseInt(startingColor[i]);
       for(var i in endingColor)
         endingColor[i] = parseInt(endingColor[i]);
-      
+
+      const [iw, ih] = [pixels.shape[0], pixels.shape[1]];
+
+      parseCornerCoordinateInputs({iw, ih},
+        {
+          width: { valInp: options.width, type: 'horizontal'},
+          height: { valInp: options.height, type: 'vertical' },
+        }, function(opt, cord){
+          options.width = Math.floor(cord.width.valInp);
+          options.height = Math.floor(cord.height.valInp);
+        });
+
       const [w, h] = [options.width, options.height];
       let newPixels = require('ndarray')(new Uint8Array(4 * w * h).fill(0), [w, h, 4]);
       if(options.gradientType === 'linear') {
