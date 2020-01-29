@@ -4,9 +4,9 @@
     "inputs": {
       "gradientType": {
         "type": "select",
-        "desc": "Choose between linear or circular gradient",
-        "default": "linear",
-        "values": ["linear", "circular"]
+        "desc": "Choose an algorithm to follow",
+        "default": "linear(left)",
+        "values": ["linear(left)", "linear(bottom)",  "circular"]
       },
       "width": {
         "type": "string",
