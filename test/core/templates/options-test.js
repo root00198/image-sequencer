@@ -27,37 +27,28 @@ module.exports = (moduleName, options, benchmark, input) => {
     // Run the ImageSequencer with initial option.
     sequencer.run(() => {
       let result = sequencer.steps[1].output.src;
+      let benchmarkDataUri = base64Img.base64Sync(benchmark[0]);
 
-      base64Img.imgSync(result, target, 'result');
-      base64Img.imgSync(benchmark[0], target, 'benchmark');
+      base64Img.imgSync(result, target, `${moduleName}-result1`);
+      base64Img.imgSync(benchmarkDataUri, target, `${moduleName}-benchmark1`);
 
-      result = './test_outputs/result.png';
-      benchmark[0] = './test_outputs/benchmark.png';
       // Check to see if first option is correctly loaded.
-      looksSame(result, benchmark[0], function(err, res) {
-        if (err) console.log(err);
+      t.equal(result === benchmark, true, `${moduleName} module works correctly with initial option ${options[0][moduleName]}`);
 
-        t.equal(res.equal, true, `${moduleName} module works correctly with initial option ${options[0][moduleName]}`);
-      });
       // Change the option of the given module.
       sequencer.steps[1].setOptions(options[1]);
       // Run the ImageSequencer witch changed option.
       sequencer.run(() => {
         let newResult = sequencer.steps[1].output.src;
+        newBenchmarkDataUri = base64Img.base64Sync(benchmark[1]);
 
-        base64Img.imgSync(newResult, target, 'newResult');
-        base64Img.imgSync(benchmark[1], target, 'benchmark');
+        base64Img.imgSync(newResult, target, `${moduleName}-result2`);
+        base64Img.imgSync(newBenchmarkDataUri, target, `${moduleName}-benchmark2`);
 
-        newResult = './test_outputs/newResult.png';
-        benchmark[1] = './test_outputs/benchmark.png';
-        // Check to see if change in option changed the image correctly.
-        looksSame(newResult, benchmark[1], function(err, res) {
-          if (err) console.log(err);
+        t.equal(newResult === newBenchmarkDataUri, true, `${moduleName} module works correctly when the option is changed to ${options[1][moduleName]}`);
+        sequencer = null;
+        t.end();
 
-          t.equal(res.equal, true, `${moduleName} module works correctly when the option is changed to ${options[1][moduleName]}`);
-          sequencer = null;
-          t.end();
-        });
       });
     });
   });
