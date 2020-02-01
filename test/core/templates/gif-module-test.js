@@ -11,7 +11,7 @@ target = 'test_outputs';
  * @description a common test for modules.
  * @param {String} moduleName name of the module.
  * @param {"Object"} options module options.
- * @param {String} benchmark dataURI of the benchmark gif.
+ * @param {String} benchmark path to the benchmark gif.
  * @param {String} [input="test_gif"] optional input image. Default is a test gif.
  */
 module.exports = (moduleName, options, benchmark, input) => {
@@ -21,11 +21,12 @@ module.exports = (moduleName, options, benchmark, input) => {
   test(`${moduleName} module works correctly`, t => {
     sequencer.run({mode: 'test'}, () => {
       let result = sequencer.steps[1].output.src;
+      let benchmarkDataUri = base64Img.base64Sync(benchmark);
 
       base64Img.imgSync(result, target, `${moduleName}-result`);
-      base64Img.imgSync(benchmark, target, `${moduleName}-benchmark`);
+      base64Img.imgSync(benchmarkDataUri, target, `${moduleName}-benchmark`);
 
-      t.equal(result === benchmark, true, `${moduleName} module works correctly with Gif`);
+      t.equal(result === benchmarkDataUri, true, `${moduleName} module works correctly with Gif`);
       sequencer = null;
       t.end();
     });
