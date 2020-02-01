@@ -2,8 +2,9 @@ const testModule = require('../templates/module-test'),
   options = {
     temperature: 20000
   },
-  benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiAIPN242uEMAtHIJFEEkkkkUQSSSSRRBJJJJFEEj1AkwGaEGLV7wAAAABJRU5ErkJggg==',
-  _benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiAIPP/5mqEMAtHIJFEEkkkkUQSSSSRRBJJJJFEEj1UXgIdx5M8pQAAAABJRU5ErkJggg==',
+  path = require('path'),
+  benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/color-temperature-benchmark.png'),
+  _benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/color-temperature-benchmark1.png'),
   optionsTest = require('../templates/options-test');
 
 testModule('color-temperature', options, benchmark);

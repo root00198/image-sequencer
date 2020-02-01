@@ -1,8 +1,9 @@
-const testModule = require('../templates/module-test'),
-  _benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAMAzDIF7/nncRgYcTTDTRRBNNNNFEE0000UQTTTTRRB9NQAEfe+dsMAAAAABJRU5ErkJggg==',
+const path = require('path'),
+  testModule = require('../templates/module-test'),
+  _benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/threshold-benchmark.png'),
   option = {threshold: 'Automatic Thresholding'},
   _option = {threshold: 'Manual Thresholding'},
-  benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiAIPP/5+qDMPsIJJJIIokkkkgiiSSSSCKJJJJIogNrygQcXEYsHQAAAABJRU5ErkJggg==';
+  benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/threshold-benchmark1.png');
 
 testModule('threshold', option, benchmark);
   

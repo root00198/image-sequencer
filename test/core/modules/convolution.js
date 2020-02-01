@@ -1,6 +1,7 @@
-const testModule = require('../templates/module-test'),
-  benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiDMKR/5xuC7QYjkEgiiSSSSCKJJJJIIokkkkgiiR5YbQIegx78CAAAAABJRU5ErkJggg==',
-  _benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAAqSURBVKXBAQEAAAiAIPP/gN7WCGEWjkAiiSSSSCKJJJJIIokkkkgiiSR6tkYBtxzHTB8AAAAASUVORK5CYII=',
+const path = require('path'),
+  testModule = require('../templates/module-test'),
+  benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/convolution-benchmark.png'),
+  _benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/convolution-benchmark1.png'),
   options = {
     constantFactor: 0.4,
     kernelValues: '1 0 1 0 1 0 1 0 1'

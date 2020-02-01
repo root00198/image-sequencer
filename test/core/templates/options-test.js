@@ -13,7 +13,7 @@ target = 'test_outputs';
  * @description a common test for modules.
  * @param {String} moduleName name of the module.
  * @param {'Object'} [options] array of options.
- * @param {String} [benchmark] dataURI of the benchmark images, a image for each option.
+ * @param {String} [benchmark] path to the benchmark images, a image for each option.
  * @param {String} [input='red_image'] optional input image. Default is a red image.
  */
 module.exports = (moduleName, options, benchmark, input) => {
@@ -33,22 +33,34 @@ module.exports = (moduleName, options, benchmark, input) => {
       base64Img.imgSync(benchmarkDataUri, target, `${moduleName}-benchmark1`);
 
       // Check to see if first option is correctly loaded.
-      t.equal(result === benchmark, true, `${moduleName} module works correctly with initial option ${options[0][moduleName]}`);
+      result = `./test_outputs/${moduleName}-result1.png`;
+      benchmark[0] = `./test_outputs/${moduleName}-benchmark1.png`;
+      // Check to see if first option is correctly loaded.
+      looksSame(result, benchmark[0], function(err, res) {
+        if (err) console.log(err);
+
+        t.equal(res.equal, true, `${moduleName} module works correctly with initial option ${options[0][moduleName]}`);
+      });
 
       // Change the option of the given module.
       sequencer.steps[1].setOptions(options[1]);
-      // Run the ImageSequencer witch changed option.
+      // Run the ImageSequencer with changed option.
       sequencer.run(() => {
         let newResult = sequencer.steps[1].output.src;
-        newBenchmarkDataUri = base64Img.base64Sync(benchmark[1]);
+        let newBenchmarkDataUri = base64Img.base64Sync(benchmark[1]);
 
         base64Img.imgSync(newResult, target, `${moduleName}-result2`);
         base64Img.imgSync(newBenchmarkDataUri, target, `${moduleName}-benchmark2`);
 
-        t.equal(newResult === newBenchmarkDataUri, true, `${moduleName} module works correctly when the option is changed to ${options[1][moduleName]}`);
-        sequencer = null;
-        t.end();
+        newResult = `./test_outputs/${moduleName}-result2.png`;
+        benchmark[1] = `./test_outputs/${moduleName}-benchmark2.png`;
+        looksSame(newResult, benchmark[1], function(err, res){
+          if(err) console.log(err);
 
+          t.equal(res.equal, true, `${moduleName} module works correctly when the option is changed to ${options[1][moduleName]}`);
+          sequencer = null;
+          t.end();
+        });
       });
     });
   });

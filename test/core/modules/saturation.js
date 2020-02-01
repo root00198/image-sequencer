@@ -1,6 +1,7 @@
-const testModule = require('../templates/module-test'),
-  benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAAtSURBVKXBAQEAMAiAME6H9y9nDw3B9v7MEkgkkUQSSSSRRBJJJJFEEkkkkUQH2vAC/LDhuwsAAAAASUVORK5CYII=',
-  _benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAAsSURBVKXBAQEAMAiAME43m7+XhmB7f2YJJJJIIokkkkgiiSSSSCKJJJJIogOYTgJtR8dNuwAAAABJRU5ErkJggg==',
+const path = require('path'),
+  testModule = require('../templates/module-test'),
+  benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/saturation-benchmark.png'),
+  _benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/saturation-benchmark1.png'),
   _options = {
     saturation: 0.5
   },

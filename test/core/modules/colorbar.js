@@ -5,8 +5,9 @@ const testModule = require('../templates/module-test'),
     y: '0',
     h: '10'
   },
-  benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAABGSURBVKXBwRHAMAzDMEbXv7n/sHE7QwWcCxtgZlBRUVFRUVFRUVFRUVEJpVAKpVAKpVAKpVB6+Owuf50LSyGUQimUQimUXt8pCbepYPZJAAAAAElFTkSuQmCC',
-  _benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAB4SURBVKXBsRUBQRiF0e9/MyzRciTiFe0RSGQSRWwnIg0oTQFaEFCAs5kZUpHg3RsF6i7OjDSMzHjmFZNuQbttSX1D7BN1/eA9PzFMXxwS9ClY3iFfC8IkTMIkTMIkTMIkTJmvW7nw38CPDXCEKFAxCJMwCZMwCdMHfmEToj5jMB0AAAAASUVORK5CYII=',
+  path = require('path'),
+  benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/colorbar-benchmark.png'),
+  _benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/colorbar-benchmark1.png'),
   optionsTest = require('../templates/options-test');
 
 testModule('colorbar', options, benchmark);

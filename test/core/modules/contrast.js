@@ -1,5 +1,6 @@
-const benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiDMKR/5xuC7QYjkEgiiSSSSCKJJJJIIokkkkgiiR5YbQIegx78CAAAAABJRU5ErkJggg==',
-  _benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiDMKR/5xuC7QYjkEgiiSSSSCKJJJJIIokkkkgiiR5YbQIegx78CAAAAABJRU5ErkJggg==',
+const path = require('path'),
+  benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/contrast-benchmark.png'),
+  _benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/contrast-benchmark1.png'),
   testModule = require('../templates/module-test'),
   optionsChange = require('../templates/options-test'),
   option = {contrast: 40},

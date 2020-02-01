@@ -1,6 +1,7 @@
-const testModule = require('../templates/module-test'),
-  benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiDMKR/5xuC7QYjkEgiiSSSSCKJJJJIIokkkkgiiR5YbQIegx78CAAAAABJRU5ErkJggg==',
-  _benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiAIPP/5mqEMAtHIJFEEkkkkUQSSSSRRBJJJJFEEj1UXgIdx5M8pQAAAABJRU5ErkJggg==',
+const path = require('path'),
+  testModule = require('../templates/module-test'),
+  benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/noise-reduction-benchmark.png'),
+  _benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/noise-reduction-benchmark1.png'),
   option = {method: 'Median Filtering'},
   _option = {method: 'Mean Filtering'};
 

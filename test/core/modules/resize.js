@@ -1,4 +1,5 @@
-const testModule = require('../templates/module-test'),
-  benchmark = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAklEQVR4AewaftIAAAAzSURBVLXBAQEAMAiAME7/zN4Ssr2BzzEJSEACEpCABCQgAQlIQAISkIAEJCABCUhAAhJYclMCJyy7k2QAAAAASUVORK5CYII=';
+const path = require('path'),
+  testModule = require('../templates/module-test'),
+  benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/resize-benchmark.png');
 
 testModule('resize', {resize: '129%'}, benchmark);

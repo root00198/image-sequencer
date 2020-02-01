@@ -1,11 +1,9 @@
-const benchmark =
-    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiAIPP/5mqEMAtHIJFEEkkkkUQSSSSRRBJJJJFEEj1UXgIdx5M8pQAAAABJRU5ErkJggg==',
+const path = require('path'),
+  benchmark = path.resolve(__dirname + '/../images/modules-test-benchmarks/blur-benchmark.png'),
   moduleTest = require('../templates/module-test'),
   optionsTest = require('../templates/options-test'),
-  benchmark1 =
-    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiAIPP/5mqEMAtHIJFEEkkkkUQSSSSRRBJJJJFEEj1UXgIdx5M8pQAAAABJRU5ErkJggg==',
-  benchmark2 =
-    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAklEQVR4AewaftIAAAApSURBVKXBAQEAAAiAIPP/5mqEMAtHIJFEEkkkkUQSSSSRRBJJJJFEEj1UXgIdx5M8pQAAAABJRU5ErkJggg==';
+  benchmark1 = path.resolve(__dirname + '/../images/modules-test-benchmarks/blur-benchmark1.png'),
+  benchmark2 = path.resolve(__dirname + '/../images/modules-test-benchmarks/blur-benchmark2.png');
 
 moduleTest('blur', { blur: 3.25 }, benchmark);
 

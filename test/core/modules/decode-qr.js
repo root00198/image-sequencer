@@ -1,5 +1,4 @@
 var test = require('tape');
-
 require('../../../src/ImageSequencer.js');
 
 var sequencer = ImageSequencer({ ui: false });

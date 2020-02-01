@@ -42,9 +42,16 @@ module.exports = (moduleName, options, benchmark, input) => {
       base64Img.imgSync(result, target, `${moduleName}-result`);
       base64Img.imgSync(benchmarkDataUri, target, `${moduleName}-benchmark`);
 
-      t.equal(result === benchmarkDataUri, true, `${moduleName} module works correctly`);
-      sequencer = null;
-      t.end();
+      result = `./test_outputs/${moduleName}-result.png`;
+      benchmark = `./test_outputs/${moduleName}-benchmark.png`;
+
+      looksSame(result, benchmark, function(err, res) {
+        if (err) console.log(err);
+
+        t.equal(res.equal, true, `${moduleName} module works correctly`);
+        sequencer = null;
+        t.end();
+      });
     });
   });
   
